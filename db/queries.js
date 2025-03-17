@@ -33,3 +33,10 @@ exports.createNewMessage = async (message, date, userId) => {
     "INSERT INTO messages (title, text, date, user_id) VALUES ($1, $2, $3, $4)";
   await pool.query(query, [message.title, message.text, date, userId]);
 };
+
+exports.getAllMessages = async () => {
+  query =
+    "SELECT messages.title, messages.text, messages.date, users.username FROM messages INNER JOIN users ON messages.user_id = users.id";
+  const { rows } = await pool.query(query);
+  return rows;
+};

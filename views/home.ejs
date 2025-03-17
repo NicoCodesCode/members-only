@@ -14,5 +14,15 @@
     <a href="/sign-up">Sign Up</a>
     <a href="/log-in">Log In</a>
     <% } %>
+    <ul>
+      <% messages.map((message) => { %>
+      <li>
+        <h3><%= message.title %></h3>
+        <p><%= message.text %></p>
+        <p><%= message.username %></p>
+        <p><%= format(message.date, "yyyy-MM-dd") %></p>
+      </li>
+      <% }) %>
+    </ul>
   </body>
 </html>

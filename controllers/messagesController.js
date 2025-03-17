@@ -39,4 +39,10 @@ const createNewMessage = [
   renderNewMessagePage,
 ];
 
-module.exports = { renderNewMessagePage, createNewMessage };
+const getAllMessages = async (req, res, next) => {
+  const messages = await db.getAllMessages();
+  req.messages = messages;
+  next();
+};
+
+module.exports = { renderNewMessagePage, createNewMessage, getAllMessages };
