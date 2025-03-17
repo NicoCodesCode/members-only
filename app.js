@@ -35,5 +35,10 @@ app.use("/", indexRouter);
 app.use("/sign-up", signUpRouter);
 app.use("/log-in", logInRouter);
 
+app.use((req, res, next, err) => {
+  console.error(err);
+  res.render("errorPage", { title: "Something went wrong :C" });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
