@@ -5,6 +5,8 @@ const indexRouter = require("./routes/indexRouter");
 const signUpRouter = require("./routes/signUpRouter");
 const session = require("express-session");
 const passport = require("passport");
+const pool = require("./db/pool");
+const pgSession = require("connect-pg-simple")(session);
 
 const app = express();
 
@@ -13,9 +15,11 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
+    store: new pgSession({ pool, tableName: "user_session" }),
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 },
   })
 );
 app.use(passport.session());
