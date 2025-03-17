@@ -47,13 +47,7 @@
           required
         />
       </div>
-      <div>
-        <ul>
-          <% if (locals.errors) { errors.map((error) => { %>
-          <li><%= error.msg %></li>
-          <% })} %>
-        </ul>
-      </div>
+      <div><%- include("partials/formErrors") %></div>
       <button type="submit">Sign Up</button>
       <a href="/"><button type="button">Go Back</button></a>
     </form>
