@@ -27,3 +27,9 @@ exports.becomeMember = async (userId) => {
   query = "UPDATE users SET membership_status = 'member' WHERE id = $1";
   await pool.query(query, [userId]);
 };
+
+exports.createNewMessage = async (message, date, userId) => {
+  query =
+    "INSERT INTO messages (title, text, date, user_id) VALUES ($1, $2, $3, $4)";
+  await pool.query(query, [message.title, message.text, date, userId]);
+};

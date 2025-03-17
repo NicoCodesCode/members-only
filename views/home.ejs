@@ -5,7 +5,10 @@
     <h1><%= title %></h1>
     <% if (locals.currentUser) { %>
     <h2>Welcome Again, <%= currentUser.username %></h2>
+    <% if (locals.currentUser.membership_status === "not member") { %>
     <a href="/join">Join the Club!</a>
+    <% } %>
+    <a href="/messages/new">New Message</a>
     <a href="/log-out">Log Out</a>
     <% } else { %>
     <a href="/sign-up">Sign Up</a>
