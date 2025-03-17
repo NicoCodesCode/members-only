@@ -31,7 +31,7 @@ const signUpUser = [
     try {
       const hashedPassword = await bcrypt.hash(user.password, 10);
       await db.insertUser({ ...user, password: hashedPassword });
-      res.redirect("/");
+      res.redirect("/log-in");
     } catch (error) {
       next(error);
     }
