@@ -3,6 +3,7 @@ const path = require("path");
 const indexRouter = require("./routes/indexRouter");
 const signUpRouter = require("./routes/signUpRouter");
 const logInRouter = require("./routes/logInRouter");
+const joinRouter = require("./routes/joinRouter");
 const session = require("express-session");
 const pgSession = require("connect-pg-simple")(session);
 const passport = require("passport");
@@ -37,6 +38,7 @@ app.use("/log-in", logInRouter);
 app.get("/log-out", (req, res, next) => {
   req.logout((err) => (err ? next(err) : res.redirect("/")));
 });
+app.use("/join", joinRouter);
 
 app.use((req, res, next, err) => {
   console.error(err);

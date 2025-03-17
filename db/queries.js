@@ -22,3 +22,8 @@ exports.insertUser = async (user) => {
     user.password,
   ]);
 };
+
+exports.becomeMember = async (userId) => {
+  query = "UPDATE users SET membership_status = 'member' WHERE id = $1";
+  await pool.query(query, [userId]);
+};

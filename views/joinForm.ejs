@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head") %>
+  <body>
+    <h1><%= title %></h1>
+    <form method="POST">
+      <div>
+        <label for="passcode">Enter the <em>secret</em> passcode: </label>
+        <input type="password" name="passcode" id="passcode" required />
+      </div>
+      <div><%- include("partials/formErrors") %></div>
+      <button type="submit">Join</button>
+      <a href="/"><button type="button">Go Back</button></a>
+    </form>
+  </body>
+</html>
