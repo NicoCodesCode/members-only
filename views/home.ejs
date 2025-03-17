@@ -19,8 +19,13 @@
       <li>
         <h3><%= message.title %></h3>
         <p><%= message.text %></p>
-        <p><%= message.username %></p>
+        <p>
+          From <%= membershipStatus === "member" ? message.username :
+          "anonymous" %>
+        </p>
+        <% if (locals.membershipStatus === "member") { %>
         <p><%= format(message.date, "yyyy-MM-dd") %></p>
+        <% } %>
       </li>
       <% }) %>
     </ul>

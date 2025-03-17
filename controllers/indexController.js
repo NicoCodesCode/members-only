@@ -7,6 +7,8 @@ exports.renderHomePage = [
     res.render("home", {
       title: "Members Only",
       messages: req.messages,
+      membershipStatus:
+        res.locals.currentUser?.membership_status || "not member",
       format,
     });
   },
