@@ -8,7 +8,7 @@ const renderSignUpPage = (req, res) => {
     return res.render("signUpForm", {
       title: "Sign Up",
       errors: req.errors,
-      invalidInput: req.invalidInput,
+      invalidInput: req.body,
     });
   }
 
@@ -22,7 +22,6 @@ const signUpUser = [
 
     if (!errors.isEmpty()) {
       req.errors = errors.array();
-      req.invalidInput = req.body;
       return next();
     }
 

@@ -7,11 +7,12 @@ const renderNewMessagePage = (req, res) => {
   if (req.errors) {
     return res.render("newMessageForm", {
       title: "New Message",
+      invalidInput: req.body,
       errors: req.errors,
     });
   }
 
-  res.render("newMessageForm", { title: "New Message" });
+  res.render("newMessageForm", { title: "New Message", invalidInput: {} });
 };
 
 const createNewMessage = [
