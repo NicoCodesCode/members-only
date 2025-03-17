@@ -2,9 +2,10 @@
 <html lang="en">
   <%- include("partials/head") %>
   <body>
-    <h1><%= title %></h1>
+    <%- include("partials/header") %>
+    <h2><%= title %></h2>
     <form method="POST">
-      <div>
+      <div class="form-group">
         <label for="passcode">Enter the <em>secret</em> passcode: </label>
         <input type="password" name="passcode" id="passcode" required />
       </div>

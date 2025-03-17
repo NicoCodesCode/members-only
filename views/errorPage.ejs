@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include("partials/head") %>
-  <body>
-    <h1><%= title %></h1>
+  <body class="error-page">
+    <%- include("partials/header") %>
+    <div class="error-container">
+      <h2><%= title %></h2>
+      <p>Sorry, something went wrong.</p>
+      <a href="/" class="back-home">Return to Home</a>
+    </div>
   </body>
 </html>

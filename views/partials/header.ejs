@@ -1,0 +1,21 @@
+<header class="flex header">
+  <a href="/"><h1>Members Only</h1></a>
+  <% if (locals.currentUser) { %>
+  <nav class="navbar flex">
+    <ul class="flex">
+      <% if (locals.currentUser.membership_status === "not member") { %>
+      <li><a href="/join" class="nav-link">Join the Club!</a></li>
+      <% } %>
+      <li><a href="/messages/new" class="nav-link">New Message</a></li>
+      <li><a href="/log-out" class="nav-link">Log Out</a></li>
+    </ul>
+  </nav>
+  <% } else { %>
+  <nav class="navbar flex">
+    <ul class="flex">
+      <li><a href="/sign-up" class="nav-link">Sign Up</a></li>
+      <li><a href="/log-in" class="nav-link">Log In</a></li>
+    </ul>
+  </nav>
+  <% } %>
+</header>
