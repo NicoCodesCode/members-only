@@ -42,7 +42,7 @@ app.get("/log-out", (req, res, next) => {
 app.use("/join", joinRouter);
 app.use("/messages", messagesRouter);
 
-app.use((req, res, next, err) => {
+app.use((err, req, res, next) => {
   console.error(err);
   res.render("errorPage", { title: "Something went wrong :C" });
 });
