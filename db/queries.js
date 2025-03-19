@@ -36,7 +36,7 @@ exports.createNewMessage = async (message, date, userId) => {
 
 exports.getAllMessages = async () => {
   query =
-    "SELECT messages.title, messages.text, messages.date, users.username FROM messages INNER JOIN users ON messages.user_id = users.id";
+    "SELECT messages.title, messages.text, messages.date, users.username FROM messages INNER JOIN users ON messages.user_id = users.id ORDER BY messages.date DESC";
   const { rows } = await pool.query(query);
   return rows;
 };
