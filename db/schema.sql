@@ -15,13 +15,13 @@ CREATE TABLE messages (
     date DATE NOT NULL
 );
 
-CREATE TABLE "session" (
+CREATE TABLE "user_session" (
   "sid" TEXT NOT NULL COLLATE "default",
   "sess" JSON NOT NULL,
   "expire" TIMESTAMP(6) NOT NULL
 )
 WITH (OIDS=FALSE);
 
-ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "user_session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
-CREATE INDEX "IDX_session_expire" ON "session" ("expire");
+CREATE INDEX "IDX_session_expire" ON "user_session" ("expire");
