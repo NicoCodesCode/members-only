@@ -25,7 +25,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 },
-  })
+  }),
 );
 app.use(passport.session());
 app.use((req, res, next) => {
@@ -47,5 +47,9 @@ app.use((err, req, res, next) => {
   res.render("errorPage", { title: "Something went wrong :C" });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+if (process.env.NODE_ENV !== "test") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+module.exports = app;
