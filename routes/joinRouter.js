@@ -1,7 +1,10 @@
 const { Router } = require("express");
 const membersController = require("../controllers/membersController");
+const ensureAuthenticated = require("../auth/ensureAuthenticated");
 
 const router = Router();
+
+router.use(ensureAuthenticated);
 
 router
   .route("/")
