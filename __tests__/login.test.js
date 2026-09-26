@@ -2,7 +2,6 @@ const request = require("supertest");
 const app = require("../app");
 const bcrypt = require("bcryptjs");
 const db = require("../db/queries");
-const pool = require("../db/pool");
 
 beforeAll(async () => {
   const hashedPassword = await bcrypt.hash("test1234", 10);
@@ -34,5 +33,5 @@ describe("POST /log-in", () => {
 });
 
 afterAll(async () => {
-  await pool.query("DELETE FROM users WHERE username = $1", ["test_login"]);
+  await db.deleteUser("test_login");
 });

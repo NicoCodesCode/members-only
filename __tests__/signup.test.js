@@ -1,6 +1,6 @@
 const request = require("supertest");
 const app = require("../app");
-const pool = require("../db/pool");
+const db = require("../db/queries");
 
 describe("POST /sign-up", () => {
   test("responds with 302 to /log-in", async () => {
@@ -29,5 +29,5 @@ describe("POST /sign-up", () => {
 });
 
 afterEach(async () => {
-  await pool.query("DELETE FROM users WHERE username = $1", ["test_signup"]);
+  await db.deleteUser("test_signup");
 });
