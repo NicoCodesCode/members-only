@@ -15,5 +15,16 @@ services:
       interval: 2s
       timeout: 5s
       retries: 10
+  app:
+    build: .
+    env_file:
+      - .env
+    environment:
+      - PGHOST=db
+    ports:
+      - 3000:3000
+    depends_on:
+      db:
+        condition: service_healthy
 volumes:
   pgdata:
