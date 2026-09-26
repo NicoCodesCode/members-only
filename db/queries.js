@@ -23,6 +23,11 @@ exports.insertUser = async (user) => {
   ]);
 };
 
+exports.deleteUser = async (username) => {
+  query = "DELETE FROM users WHERE username = $1";
+  await pool.query(query, [username]);
+};
+
 exports.becomeMember = async (userId) => {
   query = "UPDATE users SET membership_status = 'member' WHERE id = $1";
   await pool.query(query, [userId]);
@@ -39,4 +44,10 @@ exports.getAllMessages = async () => {
     "SELECT messages.title, messages.text, messages.date, users.username FROM messages INNER JOIN users ON messages.user_id = users.id ORDER BY messages.date DESC";
   const { rows } = await pool.query(query);
   return rows;
+};
+
+exports.checkIfUserIsMember = async (username) => {
+  query = "SELECT membership_status FROM users WHERE username = $1";
+  const { rows } = await pool.query(query, [username]);
+  return rows[0].membership_status;
 };
